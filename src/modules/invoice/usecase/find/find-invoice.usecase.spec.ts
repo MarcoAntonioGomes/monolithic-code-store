@@ -52,7 +52,7 @@ describe("Find invoice usecase unit test", () => {
     expect(invoiceRepository.find).toBeCalledTimes(1);
     expect(result.name).toBe("Cliente 1");
     expect(result.document).toBe("123456789");
-    expect(result.address.city).toBe(address.getCity());
+    expect(result.city).toBe(address.getCity());
     expect(result.items[0].id).toBe(items[0].id.id);
   });
 });

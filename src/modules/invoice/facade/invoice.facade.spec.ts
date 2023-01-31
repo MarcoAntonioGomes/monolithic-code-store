@@ -1,10 +1,6 @@
 import { InvoiceModel } from "../repository/invoice.model";
 import { ProductInvoiceModel } from "../repository/product-invoice.model";
 import { Sequelize } from "sequelize-typescript";
-import InvoiceRepository from "../repository/invoice.repository";
-import GenerateInvoiceUseCase from "../usecase/generate/generate-invoice.usecase";
-import FindInvoiceUseCase from "../usecase/find/find-invoice.usecase";
-import InvoiceFacade from "./invoice.facade";
 import InvoiceFacadeFactory from "../factory/invoice.factory";
 
 describe("Invoice Facade test", () => {
@@ -80,9 +76,9 @@ describe("Invoice Facade test", () => {
     const input = {
       id: "1",
       name: "Invoice 1",
-      document: "123456789",
+      document: "1234567890",
       street: "Street 1",
-      number: "1",
+      number: "123",
       complement: "Casa 1",
       zipCode: "12345678",
       city: "São Paulo",
@@ -91,12 +87,12 @@ describe("Invoice Facade test", () => {
         {
           id: "1",
           name: "Product 1",
-          price: 10,
+          price: 20,
         },
         {
           id: "2",
           name: "Product 2",
-          price: 20,
+          price: 30,
         },
       ],
     };
@@ -108,12 +104,12 @@ describe("Invoice Facade test", () => {
     expect(result.id).toEqual("1");
     expect(result.name).toEqual("Invoice 1");
     expect(result.document).toEqual("1234567890");
-    expect(result.street).toEqual("street 1");
-    expect(result.complement).toEqual("Next to drugstore");
+    expect(result.street).toEqual("Street 1");
+    expect(result.complement).toEqual("Casa 1");
     expect(result.number).toEqual("123");
-    expect(result.city).toEqual("City 1");
-    expect(result.state).toEqual("SO");
-    expect(result.zipCode).toEqual("123654987");
+    expect(result.city).toEqual("São Paulo");
+    expect(result.state).toEqual("SP");
+    expect(result.zipCode).toEqual("12345678");
 
     expect(result.items.length).toBe(2);
 
